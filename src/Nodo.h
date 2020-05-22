@@ -12,25 +12,41 @@ class Nodo{
 
 public:
 
+	/*
+	 * Crea un nodo a partir de la información a almacenar
+	 * sin un enlace aún no establecido
+	 */
 	Nodo( int datoNuevo){
 
 		this->dato = datoNuevo;
 		this->siguiente = nullptr;
 	}
 
+	/*
+	 * Obtiene el dato del nodo
+	 */
 	int getDato() const {
 		return dato;
 	}
 
+	/*
+	 * Configura el dato del nodo
+	 */
 	void setDato(int dato) {
 		this->dato = dato;
 	}
 
-	const Nodo* getSiguiente() const {
+	/*
+	 * Obtiene el siguiente nodo
+	 */
+	Nodo* getSiguiente() const {
 		return siguiente;
 	}
 
-	void setSiguiente(const Nodo *siguiente) {
+	/*
+	 * Configura el nodo para enlazarlo con otro nodo que le sucede
+	 */
+	void setSiguiente( Nodo *siguiente) {
 		this->siguiente = siguiente;
 	}
 
