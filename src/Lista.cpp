@@ -6,6 +6,7 @@
  */
 
 #include "Lista.h"
+#include <iostream>
 #include <string>
 
 const int NINGUNO = 0;
@@ -62,7 +63,22 @@ bool Lista::listaVacia(){
 	return this->primero == nullptr;
 }
 
-// IMPLEMENTAR
+void Lista::mostrar(){
+
+	/* Me posiciono en el primer elemento de la lista */
+	Nodo* actual = this->primero;
+
+	std:: cout << "{ ";
+
+	/* Mientras haya elementos los muestro por pantalla */
+	while ( actual ){
+
+		std :: cout << actual->getDato() << ", ";
+	}
+
+	std:: cout << " }";
+}
+
 Nodo* Lista::recorrerLista ( int posicion ){
 
 	/* Verifico que la posición ingresada exista en la lista */
