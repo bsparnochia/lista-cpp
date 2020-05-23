@@ -6,8 +6,10 @@
  */
 
 #include "Lista.h"
+#include <string>
 
 const int NINGUNO = 0;
+const int PRIMER_ELEMENTO = 1;
 
 Lista::Lista() {
 
@@ -63,6 +65,29 @@ bool Lista::listaVacia(){
 // IMPLEMENTAR
 Nodo* Lista::recorrerLista ( int posicion ){
 
-	return 0;
+	/* Verifico que la posición ingresada exista en la lista */
+	if ( this->fueraDeRango ( posicion ) ){
+
+		throw std::string ( " posicion ingresada fuera de rango ");
+	}
+
+	/* Me posiciono en el primer elemento de la lista */
+	Nodo* actual = this->primero;
+	int posicionActual = PRIMER_ELEMENTO;
+
+	/* Avanzo hasta llegar a la posicion deseada */
+	while ( posicionActual < posicion ){
+
+		/* Me posiciono en el elemento siguiente */
+		actual = actual->getSiguiente();
+	}
+
+	/* Devuelvo el elemento buscado */
+	return actual;
 }
 
+bool Lista::fueraDeRango( int posicion ){
+
+	return ( posicion > this->cantidadDeElementos ) ||
+				( posicion < PRIMER_ELEMENTO );
+}
