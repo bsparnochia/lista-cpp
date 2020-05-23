@@ -67,6 +67,12 @@ private:
 
 	/* Devuelve el registro de la posición indicada */
 	Nodo* recorrerLista( int posicion);
+
+	/*
+	 * Post: Indica si la posicion no corresponde a ninguna
+	 * 		 ubicación de la lista
+	 */
+	bool fueraDeRango( int posicion );
 };
 
 #endif /* LISTA_H_ */
