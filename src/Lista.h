@@ -50,6 +50,11 @@ public:
 	bool buscarDato( int dato );
 
 	/*
+	 * Indica si la lista no tiene elementos
+	 */
+	bool listaVacia();
+
+	/*
 	 * Emite por pantalla el contenido de la lista
 	 */
 	void mostrar();
@@ -59,6 +64,9 @@ private:
 
 	Nodo *primero;
 	int cantidadDeElementos;
+
+	/* Devuelve el registro de la posición indicada */
+	Nodo* recorrerLista( int posicion);
 };
 
 #endif /* LISTA_H_ */
