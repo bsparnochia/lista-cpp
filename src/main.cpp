@@ -16,6 +16,8 @@ int main(){
 
 	lista->mostrar();
 
+	delete lista;
+
 	return 0;
 }
 

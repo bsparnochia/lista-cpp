@@ -47,6 +47,9 @@ void Lista::altaFinal( int dato ){
 
 		/* Asigno el registro como el primer elemento de la lista*/
 		this->primero = nuevo;
+
+		/* Contabilizo el agregado en la lista */
+		this->cantidadDeElementos++;
 	}
 	else{
 
@@ -55,6 +58,9 @@ void Lista::altaFinal( int dato ){
 
 		/* Agrego el nuevo registro al final de la lista */
 		ultimaPosicion->setSiguiente( nuevo );
+
+		/* Contabilizo el agregado en la lista */
+		this->cantidadDeElementos++;
 	}
 }
 
@@ -74,6 +80,9 @@ void Lista::mostrar(){
 	while ( actual ){
 
 		std :: cout << actual->getDato() << ", ";
+
+		/* Me posiciono en el siguiente elemento de la lista */
+		actual = actual->getSiguiente();
 	}
 
 	std:: cout << " }";
@@ -96,6 +105,7 @@ Nodo* Lista::recorrerLista ( int posicion ){
 
 		/* Me posiciono en el elemento siguiente */
 		actual = actual->getSiguiente();
+		posicionActual++;
 	}
 
 	/* Devuelvo el elemento buscado */
