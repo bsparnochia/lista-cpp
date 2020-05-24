@@ -70,9 +70,6 @@ void Lista::altaFinal( int dato ){
 
 		/* Asigno el registro como el primer elemento de la lista*/
 		this->primero = nuevo;
-
-		/* Contabilizo el agregado en la lista */
-		this->cantidadDeElementos++;
 	}
 	else{
 
@@ -82,9 +79,10 @@ void Lista::altaFinal( int dato ){
 		/* Agrego el nuevo registro al final de la lista */
 		ultimaPosicion->setSiguiente( nuevo );
 
-		/* Contabilizo el agregado en la lista */
-		this->cantidadDeElementos++;
 	}
+
+	/* Contabilizo el agregado en la lista */
+	this->cantidadDeElementos++;
 }
 
 void Lista::eliminarDato( int datoBuscado ){
@@ -115,6 +113,9 @@ void Lista::eliminarDato( int datoBuscado ){
 			/* elimino el elemento y apunto al siguiente de la lista */
 			delete actual;
 			actual = siguiente;
+
+			/* Descuento el elemento del contador */
+			this->cantidadDeElementos--;
 		}
 		/* si no hay coincidencia solo corro los punteros a sus correspondientes siguientes */
 		else{
