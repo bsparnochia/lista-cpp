@@ -31,20 +31,18 @@ Lista::Lista() {
 
 Lista::~Lista(){
 
-	/* Me posiciono en el primer elemento de la lista */
-	Nodo* actual = this->primero;
-
 	/* recorre la lista si contiene registros */
-	while ( actual ){
+	while ( !this->listaVacia() ){
 
 		/* guardo el registro siguiente */
-		Nodo* siguiente = actual->getSiguiente();
+		Nodo* siguiente = this->primero->getSiguiente();
 
 		/* elimino el registro actual */
-		delete actual;
+		delete this->primero;
+		this->cantidadDeElementos--;
 
 		/* el registro siguiente ahora es el actual a eliminar */
-		actual = siguiente;
+		this->primero = siguiente;
 	}
 
 }
@@ -60,6 +58,7 @@ void Lista::altaPrincipio( int dato ){
 	}
 
 	this->primero = nuevo;
+	this->cantidadDeElementos++;
 }
 
 void Lista::altaFinal( int dato ){
@@ -85,6 +84,44 @@ void Lista::altaFinal( int dato ){
 
 		/* Contabilizo el agregado en la lista */
 		this->cantidadDeElementos++;
+	}
+}
+
+void Lista::eliminarDato( int datoBuscado ){
+
+	Nodo* actual = this->primero;
+	Nodo* anterior = this->primero;
+
+	while ( actual ){
+
+		/* guardo el siguiente para seguir buscando coincidencias */
+		Nodo* siguiente = actual->getSiguiente();
+
+		/* verifico si el elemento actual es el buscado */
+		if ( actual->getDato() == datoBuscado){
+
+			if ( actual == this->primero ){
+
+				/* el primero y el anterior ahora son el siguiente */
+				this->primero = siguiente;
+				anterior = siguiente;
+			}
+			else{
+
+				/* conecto el anterior del actual con su siguiente */
+				anterior->setSiguiente( siguiente );
+			}
+
+			/* elimino el elemento y apunto al siguiente de la lista */
+			delete actual;
+			actual = siguiente;
+		}
+		/* si no hay coincidencia solo corro los punteros a sus correspondientes siguientes */
+		else{
+
+			anterior = actual;
+			actual = siguiente;
+		}
 	}
 }
 
