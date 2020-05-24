@@ -15,7 +15,7 @@ class Lista {
 public:
 
 	/*
-	 * Crea una lista vacía
+	 * Crea una lista vacï¿½a
 	 */
 	Lista();
 
@@ -25,37 +25,46 @@ public:
 	~Lista();
 
 	/*
-	 * Agrega el registro al principio de la lista
+	 * Post: Agrega el registro al principio de la lista.
 	 */
 	void altaPrincipio( int dato );
 
 	/*
-	 * Agrega el registro al final de la lista
+	 * Post : Agrega el registro al final de la lista
 	 */
 	void altaFinal( int dato );
 
 	/*
-	 * Agrega el dato en la posición de la lista indicada por parámetro
+	 * Pre: La lista no esta vacÃ­a y la posiciÃ³n existe
+	 *
+	 * Post:Agrega el dato en la posiciï¿½n de la lista indicada por parï¿½metro
 	 */
 	void altaEnPosicion( int dato, int posicion );
 
 	/*
-	 * Elimina todos los registros que contengan el dato indicado por parámetro
+	 * Pre: La lista no esta vacÃ­a
+	 *
+	 * Post: Elimina todos los registros que contengan el dato indicado por parï¿½metro
 	 */
 	void eliminarDato( int dato );
 
 	/*
 	 * Indica si el elemento indicado existe en la lista
+	 *
+	 * Pre: la lista no esta vacÃ­a
+	 *
+	 * Post: devuelve verdadero si encontro el dato
 	 */
 	bool buscarDato( int dato );
 
 	/*
-	 * Indica si la lista no tiene elementos
+	 * Post: Indica si la lista no tiene elementos
+	 * 		 Devuelve verdadero si no tiene elementos
 	 */
 	bool listaVacia();
 
 	/*
-	 * Emite por pantalla el contenido de la lista
+	 * Post: Emite por pantalla el contenido de la lista
 	 */
 	void mostrar();
 
@@ -65,12 +74,12 @@ private:
 	Nodo *primero;
 	int cantidadDeElementos;
 
-	/* Devuelve el registro de la posición indicada */
+	/* Post: Devuelve el registro de la posiciï¿½n indicada */
 	Nodo* recorrerLista( int posicion);
 
 	/*
 	 * Post: Indica si la posicion no corresponde a ninguna
-	 * 		 ubicación de la lista
+	 * 		 ubicaciï¿½n de la lista
 	 */
 	bool fueraDeRango( int posicion );
 };
