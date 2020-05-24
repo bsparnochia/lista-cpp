@@ -78,10 +78,18 @@ private:
 	Nodo* recorrerLista( int posicion);
 
 	/*
-	 * Post: Indica si la posicion no corresponde a ninguna
+	 * Post: Indica si la posicion a la que se intento llegar
+	 * 		 no corresponde a ninguna
 	 * 		 ubicaci�n de la lista
 	 */
-	bool fueraDeRango( int posicion );
+	bool recorridoFueraDeRango( int posicion );
+
+	/*
+	 * Post: Indica si la posicion que se intento agregar
+	 * 		 no corresponde a ninguna
+	 * 		 ubicaci�n de la lista
+	 */
+	bool agregadoFueraDeRango( int posicion );
 };
 
 #endif /* LISTA_H_ */

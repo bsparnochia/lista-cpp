@@ -11,6 +11,8 @@ int main(){
 
 	Lista* lista = new Lista();
 	int buscado = 5;
+	int posicion = 7;
+	int agregado = 13;
 
 	std::cout << "alta final \n" << std::endl;
 
@@ -47,6 +49,19 @@ int main(){
 	lista->eliminarDato(buscado);
 
 	lista->mostrar();
+
+	try{
+
+		std::cout << "\n inserto el nuevo valor en la posicion " << posicion << " \n" << std::endl;
+
+		lista->altaEnPosicion(agregado, posicion);
+
+		lista->mostrar();
+
+	}catch(...){
+
+		std:: cout << " Hubo un error al insertar en la posicion "<< posicion <<std::endl;
+	}
 
 	delete lista;
 

@@ -85,6 +85,44 @@ void Lista::altaFinal( int dato ){
 	this->cantidadDeElementos++;
 }
 
+void Lista::altaEnPosicion( int dato, int posicionBuscada ){
+
+	if ( agregadoFueraDeRango(posicionBuscada) ){
+
+		throw std::string (" Posicion inexistente en la lista ");
+	}
+
+	Nodo* nuevo = new Nodo(dato);
+
+	int posicionActual = PRIMER_ELEMENTO;
+
+	Nodo* actual = this->primero;
+	Nodo* anterior = this->primero;
+
+	while ( posicionActual < posicionBuscada ){
+
+		anterior = actual;
+		actual = actual->getSiguiente();
+		posicionActual++;
+	}
+
+	/* corro el elemento actual de la posicion buscada a la siguiente */
+	nuevo->setSiguiente( actual);
+
+	if( actual == this->primero ){
+
+		this->primero = nuevo;
+	}
+	/* si no es la primera posición, su siguiente sera el nuevo elemento */
+	else{
+
+		anterior->setSiguiente(nuevo);
+	}
+
+	this->cantidadDeElementos++;
+
+}
+
 void Lista::eliminarDato( int datoBuscado ){
 
 	Nodo* actual = this->primero;
@@ -176,7 +214,7 @@ void Lista::mostrar(){
 Nodo* Lista::recorrerLista ( int posicion ){
 
 	/* Verifico que la posici�n ingresada exista en la lista */
-	if ( this->fueraDeRango ( posicion ) ){
+	if ( this->recorridoFueraDeRango ( posicion ) ){
 
 		throw std::string ( " posicion ingresada fuera de rango ");
 	}
@@ -199,8 +237,17 @@ Nodo* Lista::recorrerLista ( int posicion ){
 
 
 
-bool Lista::fueraDeRango( int posicion ){
+bool Lista::recorridoFueraDeRango( int posicion ){
 
 	return ( posicion > this->cantidadDeElementos ) ||
+				( posicion < PRIMER_ELEMENTO );
+}
+
+bool Lista::agregadoFueraDeRango( int posicion ){
+
+	/* se aumenta en 1 la cantidad de elementos para
+	 * permitir agregar al final de la lista un nuevo elemento
+	 */
+	return ( posicion > this->cantidadDeElementos + 1 ) ||
 				( posicion < PRIMER_ELEMENTO );
 }
