@@ -10,7 +10,7 @@
 int main(){
 
 	Lista* lista = new Lista();
-	int buscado = 57;
+	int buscado = 5;
 
 	std::cout << "alta final \n" << std::endl;
 
@@ -31,12 +31,6 @@ int main(){
 
 	lista->mostrar();
 
-	//std::cout << "\n Borrar coincidencias donde hay un " << buscado << " \n" << std::endl;
-
-	//lista->eliminarDato(buscado);
-
-	//lista->mostrar();
-
 	std::cout << "\n buscar " << buscado << " \n" << std::endl;
 
 	if ( lista->buscarDato(buscado) ){
@@ -48,7 +42,11 @@ int main(){
 		std::cout << " no existe el elemento en la lista " << std::endl;
 	}
 
+	std::cout << "\n Borrar coincidencias donde hay un " << buscado << " \n" << std::endl;
 
+	lista->eliminarDato(buscado);
+
+	lista->mostrar();
 
 	delete lista;
 
