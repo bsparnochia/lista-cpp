@@ -166,6 +166,8 @@ void Lista::mostrar(){
 	}
 
 	std::cout << " }" << std::endl; ;
+
+	std::cout <<"Cantidad de elementos de la lista : " << this->cantidadDeElementos << std:: endl;
 }
 
 /* ----------------    PRIVADOS   --------------------  */
