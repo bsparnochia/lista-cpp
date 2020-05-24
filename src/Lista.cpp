@@ -43,12 +43,12 @@ void Lista::altaPrincipio( int dato ){
 	Nodo* nuevo = new Nodo( dato );
 
 	/* Verifico si existe un primer elemento en al lista */
-	if ( primero ){
+	if ( this->primero ){
 
-		nuevo->getSiguiente() = primero;
+		nuevo->setSiguiente( this->primero );
 	}
 
-	primero = nuevo;
+	this->primero = nuevo;
 }
 
 void Lista::altaFinal( int dato ){
