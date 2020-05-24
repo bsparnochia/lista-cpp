@@ -9,8 +9,19 @@
 #include <iostream>
 #include <string>
 
+/* ---------- CONSTANTES ---------------- */
+
+/* Indica que no hay elementos contabilizados en la lista */
 const int NINGUNO = 0;
+
 const int PRIMER_ELEMENTO = 1;
+
+/* Indica si el elemento buscado se encuentra en la lista */
+const bool NO_ENCONTRADO = false;
+const bool HAY_COINCIDENCIA = true;
+
+/* -------------------------------------- */
+
 
 Lista::Lista() {
 
@@ -77,6 +88,25 @@ void Lista::altaFinal( int dato ){
 	}
 }
 
+bool Lista::buscarDato( int datoBuscado){
+
+	Nodo* actual = this->primero;
+
+	bool encontrado = NO_ENCONTRADO;
+
+	while ( !encontrado && actual ){
+
+		if ( actual->getDato() == datoBuscado ){
+
+			encontrado = HAY_COINCIDENCIA;
+		}
+
+		actual = actual->getSiguiente();
+	}
+
+	return encontrado;
+}
+
 bool Lista::listaVacia(){
 
 	return this->primero == nullptr;
@@ -87,7 +117,7 @@ void Lista::mostrar(){
 	/* Me posiciono en el primer elemento de la lista */
 	Nodo* actual = this->primero;
 
-	std:: cout << "{ ";
+	std::cout << "{ ";
 
 	/* Mientras haya elementos los muestro por pantalla */
 	while ( actual ){
@@ -98,8 +128,10 @@ void Lista::mostrar(){
 		actual = actual->getSiguiente();
 	}
 
-	std:: cout << " }";
+	std::cout << " }" << std::endl; ;
 }
+
+/* ----------------    PRIVADOS   --------------------  */
 
 Nodo* Lista::recorrerLista ( int posicion ){
 
