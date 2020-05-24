@@ -38,6 +38,19 @@ Lista::~Lista(){
 
 }
 
+void Lista::altaPrincipio( int dato ){
+
+	Nodo* nuevo = new Nodo( dato );
+
+	/* Verifico si existe un primer elemento en al lista */
+	if ( primero ){
+
+		nuevo->getSiguiente() = primero;
+	}
+
+	primero = nuevo;
+}
+
 void Lista::altaFinal( int dato ){
 
 	/* Creo el registro donde se guarda el dato */
@@ -53,7 +66,7 @@ void Lista::altaFinal( int dato ){
 	}
 	else{
 
-		/* Avanzo en la lista hasta el último registro */
+		/* Avanzo en la lista hasta el ï¿½ltimo registro */
 		Nodo* ultimaPosicion = this->recorrerLista( this->cantidadDeElementos );
 
 		/* Agrego el nuevo registro al final de la lista */
@@ -90,7 +103,7 @@ void Lista::mostrar(){
 
 Nodo* Lista::recorrerLista ( int posicion ){
 
-	/* Verifico que la posición ingresada exista en la lista */
+	/* Verifico que la posiciï¿½n ingresada exista en la lista */
 	if ( this->fueraDeRango ( posicion ) ){
 
 		throw std::string ( " posicion ingresada fuera de rango ");
@@ -111,6 +124,8 @@ Nodo* Lista::recorrerLista ( int posicion ){
 	/* Devuelvo el elemento buscado */
 	return actual;
 }
+
+
 
 bool Lista::fueraDeRango( int posicion ){
 
